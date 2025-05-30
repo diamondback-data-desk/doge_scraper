@@ -2,7 +2,7 @@ name: Scraping DOGE Website Automation
 
 on: 
   schedule:
-    - cron: "50 15 * * *" # to run everyday at 9 am
+    - cron: "54 15 * * *" # to run everyday at 9 am
 
 # job has three compoents: runs_on, strategy and steps
 
@@ -13,5 +13,13 @@ jobs:
   # not including strategy since it is not needed now
 
   steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python version: 3.14
+
     - name: Run Doge Scraper
       run: python doge_umd_scraper/scrape_doge.py
