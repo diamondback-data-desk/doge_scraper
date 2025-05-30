@@ -19,6 +19,7 @@ jobs:
 
       - name: Build
         run: pip install selenium
+        run: pip install pandas
 
       - name: Run Doge Scraper
         run: python scrape_doge.py
