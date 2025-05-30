@@ -33,7 +33,7 @@ jobs:
 
       - name: Commit Data
         run: |
-          git add data/doge.csv
+          git add data/doge_data.csv
           git commit -m "Update doge_data.csv [auto]" || echo "No changes to commit"
           git push
         env:
