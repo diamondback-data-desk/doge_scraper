@@ -41,15 +41,9 @@ leases_table = []
 
 # scrape function for contracts
 def scrape_contracts():
-    # gives a pause so that the DOGE site can fully load
-    # before sometimes the first table would not be collected
-    time.sleep(2)
+    contracts_total_value = contract_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[1]/div[1]/div[2]/button[2]')
 
-    # finding the date button in the html
-    contracts_date = contract_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[1]/div[1]/div[2]/button[3]')
-    # clicking the date button so that the tables are presented in descending order
-    # from the most recent "saving" to the least recent one
-    contracts_date.click()
+    contracts_total_value.click()
     
     # contracts while loop
     # while the following can be done 
@@ -87,16 +81,10 @@ def scrape_contracts():
 # grant scraper function
 def scrape_grants():
     time.sleep(2)
-    
-    # the grants function has the same sturcture as the contracts function
-    # the only difference is some of the names of variables refer to grants
-    # to diffirentiate between the functions and their elements.
 
-    # Additionally the XPATH, or  the direct html path to the date and next buttons are
-    # different because they are located in different areas compared to the contract buttons.
+    grants_total_value = grant_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[2]/div[1]/div[2]/button[2]')
 
-    grants_by_date = grant_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[2]/div[1]/div[2]/button[3]')
-    grants_by_date.click()
+    grants_total_value.click()
     
     # grants loop
     while True:
@@ -131,6 +119,9 @@ def scrape_leases():
 
     leases_by_date = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[3]/div[1]/div[2]/button[3]')
     leases_by_date.click()
+
+    leases_total_value = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[3]/div[1]/div[2]/button[2]')
+    leases_total_value.click()
 
     # leases while loop
     while True:

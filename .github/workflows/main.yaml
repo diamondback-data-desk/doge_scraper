@@ -1,0 +1,17 @@
+name: Scraping DOGE Website Automation
+
+on: 
+  schedule:
+    - cron: "50 15 * * *" # to run everyday at 9 am
+
+# job has three compoents: runs_on, strategy and steps
+
+jobs:
+  run_script:
+    runs-on: windows-latest # a standard git-hub runner
+
+  # not including strategy since it is not needed now
+
+  steps:
+    - name: Run Doge Scraper
+      run: python doge_umd_scraper/scrape_doge.py
