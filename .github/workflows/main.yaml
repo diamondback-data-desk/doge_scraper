@@ -10,8 +10,6 @@ jobs:
   run_script:
     runs-on: windows-latest # a standard git-hub runner
 
-  # not including strategy since it is not needed now
-
   steps:
     - name: Checkout repository
       uses: actions/checkout@v4
