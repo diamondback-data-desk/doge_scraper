@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build
-        run: pip install selenium pandas
+        run: pip install selenium pandas lxml
 
       - name: Run Doge Scraper
         run: python scrape_doge.py
