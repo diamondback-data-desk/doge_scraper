@@ -3,6 +3,8 @@ name: Scraping DOGE Website Automation
 on: 
   schedule:
     - cron: "0 9 * * *" # to run everyday at 9 am
+  permissions:
+    contents: write
   push:
     branches-ignore: [] # trys and runs this whenever it is pushed
     # used for testing, will remove in a bit
@@ -22,3 +24,16 @@ jobs:
 
       - name: Run Doge Scraper
         run: python scrape_doge.py
+      
+      - name: Set Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Commit Data
+        run: |
+          git add data/doge.csv
+          git commit -m "Update doge_data.csv [auto]" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
