@@ -3,11 +3,12 @@ name: Scraping DOGE Website Automation
 on: 
   schedule:
     - cron: "0 9 * * *" # to run everyday at 9 am
-  permissions:
-    contents: write
   push:
     branches-ignore: [] # trys and runs this whenever it is pushed
     # used for testing, will remove in a bit
+
+permissions:
+    contents: write
 
 # job has three compoents: runs_on, strategy and steps
 
