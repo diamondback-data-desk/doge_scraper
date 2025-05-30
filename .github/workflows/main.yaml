@@ -17,10 +17,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.12
-
       - name: Run Doge Scraper
-        run: python doge_umd_scraper/scrape_doge.py
+        run: python scrape_doge.py
