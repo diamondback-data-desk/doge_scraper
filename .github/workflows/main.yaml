@@ -17,5 +17,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Build
+        run: npm install selenium
+
       - name: Run Doge Scraper
         run: python scrape_doge.py
