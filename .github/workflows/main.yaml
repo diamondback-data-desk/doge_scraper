@@ -2,7 +2,10 @@ name: Scraping DOGE Website Automation
 
 on: 
   schedule:
-    - cron: "54 15 * * *" # to run everyday at 9 am
+    - cron: "0 9 * * *" # to run everyday at 9 am
+  push:
+    branches-ignore: [] # trys and runs this whenever it is pushed
+    # used for testing, will remove in a bit
 
 # job has three compoents: runs_on, strategy and steps
 
@@ -10,14 +13,14 @@ jobs:
   run_script:
     runs-on: windows-latest # a standard git-hub runner
 
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python version: 3.14
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python version: 3.14
 
-    - name: Run Doge Scraper
-      run: python doge_umd_scraper/scrape_doge.py
+      - name: Run Doge Scraper
+        run: python doge_umd_scraper/scrape_doge.py
