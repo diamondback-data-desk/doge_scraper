@@ -35,7 +35,7 @@ jobs:
       - name: Commit Data
         run: |
           git add data/doge_data.csv
-          git commit -m "Update doge_data.csv [auto]" || echo "No changes to commit"
+          git commit -m "Update doge_data.csv [auto]"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
