@@ -2,7 +2,7 @@ name: Scraping DOGE Website Automation
 
 on: 
   schedule:
-    - cron: "0 0 9 ? * MON-FRI" # to run at 9am Monday-Friday
+    - cron: "0 9 * * *" # to run at 9am Monday-Friday
   #push:
    # branches-ignore: [] # trys and runs this whenever it is pushed
     # used for testing, will remove in a bit
