@@ -1,16 +1,14 @@
-name: Scraping DOGE Website Automation
+name: Deep Clean DOGE Data Automation
 
 on: 
   schedule:
-    - cron: "0 0 9 ? * MON-FRI" # to run at 9am Monday-Friday
-  #push:
-   # branches-ignore: [] # trys and runs this whenever it is pushed
+    - cron: "0 30 10 ? * MON-FRI" # to run at 10:30am Monday-Friday
+  push:
+    branches-ignore: [] # trys and runs this whenever it is pushed
     # used for testing, will remove in a bit
 
 permissions:
     contents: write
-
-# job has three compoents: runs_on, strategy and steps
 
 jobs:
   run_script:
@@ -20,12 +18,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build
-        run: pip install selenium pandas lxml
+      - name: Run Deep Clean
+        run: Rscript deep_clean.R
 
-      - name: Run Doge Scraper
-        run: python scrape_doge.py
-      
       - name: Set Git
         run: |
           git config --global user.name 'github-actions[bot]'

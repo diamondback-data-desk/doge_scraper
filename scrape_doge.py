@@ -1,7 +1,3 @@
-"""
-Imports
-"""
-#pip3 install selenium # uncoment if needed
 from selenium import webdriver # allows dynamic scraping
 from selenium.webdriver.common.by import By # imports function to search HTML later
 from threading import Thread # allows multiple functions to be run at once. Enables me to scrape DOGE faster.
