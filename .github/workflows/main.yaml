@@ -1,40 +1,48 @@
+# to automate scraping DOGE website
 name: Scraping DOGE Website Automation
 
 on: 
   schedule:
     - cron: "0 9 * * *" # to run at 9am Monday-Friday
+  # uncomment to test automation
   #push:
    # branches-ignore: [] # trys and runs this whenever it is pushed
-    # used for testing, will remove in a bit
 
 permissions:
-    contents: write
+    contents: write # permission to write
 
-# job has three compoents: runs_on, strategy and steps
+# job has three compoents: runs_on, strategy and steps, don't need them all
 
+# only needed runs_on and steps
+# jobs runs the script and all requirements
 jobs:
   run_script:
+    # selectes the type of driver for the automation
     runs-on: windows-latest # a standard git-hub runner
-
+    # steps defines the sequence of actions to take in the automation
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        # github action to download repository's code into github action runner
+        # allows other steps to have access to project files
+        uses: actions/checkout@v4 
 
       - name: Build
-        run: pip install selenium pandas lxml
+        run: pip install selenium pandas lxml # installs requirements
 
       - name: Run Doge Scraper
-        run: python scrape_doge.py
+        run: python scrape_doge.py # running the scraper
       
       - name: Set Git
+        # setting up github bot to commit changes later
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Commit Data
+        # adding the changed data, commiting the data and pushing it
         run: |
           git add data/doge_data.csv
-          git commit -m "Update doge_data.csv [auto]" || echo "No changes to commit"
+          git commit -m "Update doge_data.csv [auto]"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

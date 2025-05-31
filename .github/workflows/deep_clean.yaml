@@ -1,38 +1,48 @@
-name: Deep Clean DOGE Data Automation
+# file to automate cleaning of raw DOGE data
+name: Deep Clean DOGE Data Automation # name
 
 on: 
   schedule:
     - cron: "30 10 * * *" # to run at 10:30am Monday-Friday
+  # uncomment this to test automation
   # push:
   #   branches-ignore: [] # trys and runs this whenever it is pushed
-  #   # used for testing, will remove in a bit
 
 permissions:
-    contents: write
+    contents: write # giving write permissions
 
+# jobs runs the script and all requirements
 jobs:
   run_script:
+    # selectes the type of driver for the automation
     runs-on: windows-latest # a standard git-hub runner
-
+    # steps defines the sequence of actions to take in the automation
     steps:
       - name: Checkout repository
+        # github action to download repository's code into github action runner
+        # allows other steps to have access to project files
         uses: actions/checkout@v4
 
       - name: Setting up r
+        # sets up R for use later
         uses: r-lib/actions/setup-r@v2
 
       - name: Build
+        # installing the packages needed to run the R file
         run: Rscript -e 'install.packages("tidyverse")'
 
       - name: Run Deep Clean
+        # running the file
         run: Rscript deep_clean.R
 
       - name: Set Git
+        # setting up github bot to commit changes later
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Commit Data
+        # adding the changed data, commiting the data and pushing it
         run: |
           git add data/umd_cuts.csv
           git commit -m "Update umd_cuts.csv [auto]"
