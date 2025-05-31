@@ -3,9 +3,6 @@ name: Deep Clean DOGE Data Automation
 on: 
   schedule:
     - cron: "30 10 * * *" # to run at 10:30am Monday-Friday
-  push:
-    branches-ignore: [] # trys and runs this whenever it is pushed
-    # used for testing, will remove in a bit
 
 permissions:
     contents: write
