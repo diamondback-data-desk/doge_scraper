@@ -3,7 +3,7 @@ name: Deep Clean DOGE Data Automation # name
 
 on: 
   schedule:
-    - cron: "30 10 * * *" # to run at 10:30am Monday-Friday
+    - cron: "30 6 * * *" # to run at 10:30am Monday-Friday was 30 10 but four hours off
   # uncomment this to test automation
   # push:
   #   branches-ignore: [] # trys and runs this whenever it is pushed
