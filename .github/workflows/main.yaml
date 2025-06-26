@@ -5,8 +5,8 @@ on:
   schedule:
     - cron: "0 13 * * *" # to run at 9am Monday-Friday was 0 9 but it was running 4 hours early
   # uncomment to test automation
-  # push:
-    # branches-ignore: [] # trys and runs this whenever it is pushed
+  push:
+     branches-ignore: [] # trys and runs this whenever it is pushed
 
 permissions:
     contents: write # permission to write
