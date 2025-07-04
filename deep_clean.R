@@ -28,13 +28,14 @@ umd_doge_cuts <- doge_data |>
     str_detect(Recipient, " university of maryland, college park")
 )
 
+
 # Filtering out cuts that include "baltimore", "es", or "Eastern Shore"
 umd_doge_cuts_unrelated <- umd_doge_cuts |>
   filter(
     str_detect(Vendor, "baltimore") | 
     str_detect(Recipient, "baltimore") |
-    str_detect(Vendor, "es") |
-    str_detect(Recipient, "es") |
+    str_detect(Vendor, "university of maryland es") |
+    str_detect(Recipient, "university of maryland es") |
     str_detect(Vendor, "eastern shore") |
     str_detect(Recipient, "eastern shore") 
   )
