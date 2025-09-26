@@ -11,3 +11,8 @@ This github repository updates automatically with scraping beginning at 9:00 am,
 
 ## Data
 Raw DOGE cuts are provided in the data/doge_cuts.csv file. DOGE cuts specific to the University of Maryland or University of Maryland, College Park are located in data/umd_cuts.csv.
+
+## Update
+The DOGE scraper has been paused indefinitely since it no longer needs to run every day. Utilization of the scraper will be minimal going forward and as a way of checking the university. To initialize the scraper go to 'Actions', select the action you want to enable and click 'Enable Workflow’.
+
+Last updated by Theodore Rose on September 25, 2025.
