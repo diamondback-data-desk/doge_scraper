@@ -19,6 +19,7 @@ jobs:
   run_script:
     # selectes the type of driver for the automation
     runs-on: windows-latest # a standard git-hub runner
+    timeout-minutes: 480 # sets a higher timeout max
     # steps defines the sequence of actions to take in the automation
     steps:
       - name: Checkout repository
