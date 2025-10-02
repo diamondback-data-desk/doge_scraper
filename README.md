@@ -13,6 +13,11 @@ This github repository updates automatically with scraping beginning at 9:00 am,
 Raw DOGE cuts are provided in the data/doge_cuts.csv file. DOGE cuts specific to the University of Maryland or University of Maryland, College Park are located in data/umd_cuts.csv.
 
 ## Update
+
+--October 1, 2025--
+The DOGE scraper is now both fixed and interates through every row. All descriptions of grants, leases and contracts within the savings page are now entirly collected - though, some of them are useless. It takes seven hours though. That's, a bit long. But I'll change the timing of collection times to not be as frequent.
+
+--September 25, 2025--
 The DOGE scraper has been paused indefinitely since it no longer needs to run every day. Utilization of the scraper will be minimal going forward and as a way of checking the university. To initialize the scraper go to 'Actions', select the action you want to enable and click 'Enable Workflow’.
 
-Last updated by Theodore Rose on September 25, 2025.
+Last updated by Theodore Rose on .
