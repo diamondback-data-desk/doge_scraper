@@ -1,5 +1,7 @@
 from selenium import webdriver # allows dynamic scraping
 from selenium.webdriver.common.by import By # imports function to search HTML later
+from selenium.webdriver.support.ui import WebDriverWait # allows for pauses in script until condition is me 
+from selenium.webdriver.support import expected_conditions as EC # used with above import; gives predefined conditions
 from threading import Thread # allows multiple functions to be run at once. Enables me to scrape DOGE faster.
 import pandas as pd # gets tables from HTML and allows joining of data frames
 import time # enables the scraper to not get flagged for bot behavior
@@ -24,9 +26,9 @@ time.sleep(1)
 
 # opening DOGE site on each driver
 print("Opening DOGE sites . . . ")
-contract_driver.get("https://www.doge.gov/savings")
-grant_driver.get("https://www.doge.gov/savings")
-leases_driver.get("https://www.doge.gov/savings")
+contract_driver.get("https://doge.gov/savings")
+grant_driver.get("https://doge.gov/savings")
+leases_driver.get("https://doge.gov/savings")
 
 # setting empty lists for the data to be put into
 # this is needed as we need to combine each list later
@@ -35,142 +37,224 @@ contracts_table = []
 grants_table = []
 leases_table = []
 
-# scrape function for contracts
-def scrape_contracts():
-    # finding the by contract value button to arrange the table by value
-    # this was the only way to get the value of the contracts and other categories
-    contracts_total_value = contract_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[5]/div[1]/div[1]/div[2]/button[2]')
-
-    # clicking the by total value button to arrange it
-    contracts_total_value.click()
-    
-    # contracts while loop
-    # while the following can be done 
-    while True:    
-        # getting the html
-        contract_html = contract_driver.page_source
-        # getting the tables from html
-        contract_tables = pd.read_html(contract_html)
-
-        # adding the correct numbered table (0) for the contract table
-        contracts_table.append(contract_tables[0])
-        print("Contract table collected ")
-      
-        # trying to find the button to get the next contract table
-        try:
-            # finding the next button element
-            next = contract_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[5]/div[1]/div[3]/div[2]/button[8]')
-
-            # asks whether or not the next button is enabled
-            # if the button is not enabled, then break the function
-            # this ends the function after there are no more tables to collect
-            if not next.is_enabled():
-                break
-                
-            # if next passed the if not statement above it clicks the button
-            # then sleeps for two seconds waiting to run everything else
-            # after the page loads
-            if next:
-                next.click()
-                time.sleep(2)
-    
-        except:
-            break
-
-# grant scraper function
+# functions scraping spcific tables
 def scrape_grants():
+    # finding the by grant value button to arrange the table by value
+    grants_total_value = grant_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[2]/div[1]/div[2]/button[2]') # the direct xpath to the button . . . this breaks often and could be fixed (works without fix tho)
+    grants_total_value.click()
     time.sleep(2)
 
-    grants_total_value = grant_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[5]/div[2]/div[1]/div[2]/button[2]')
-
-    grants_total_value.click()
+    page_number = 1
     
-    # grants loop
     while True:
-    
-        grant_html = grant_driver.page_source
-        grant_tables = pd.read_html(grant_html)
-    
-        grants_table.append(grant_tables[1])
-        print("Grants table collected")
-    
-        try:
         
-            next = grant_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[5]/div[2]/div[3]/div[2]/button[8]')
-    
-            if not next.is_enabled():
+        # Wait for table rows to load
+        time.sleep(1.5)
+        tbody = grant_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[2]/div[2]/div/div/div/table/tbody') #path to table body
+        rows = tbody.find_elements(By.TAG_NAME, 'tr') # Collects all rows
+        
+        for i, row in enumerate(rows): #for loop going through every row in the table and getting the popup info
+            try:
+                # Re-find the row to avoid stale element issues
+                tbody = grant_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[2]/div[2]/div/div/div/table/tbody') # error handling, same as before
+                current_rows = tbody.find_elements(By.TAG_NAME, 'tr')
+                
+                if i < len(current_rows): # if statement clicking the row, else skips
+                    current_rows[i].click()
+                else:
+                    print(f"Row {i} no longer exists, skipping")
+                    continue
+
+                # Wait for the popup to appear
+                popup = WebDriverWait(grant_driver, 10).until( # waits for the popup to appear before selecting the text area
+                    EC.presence_of_element_located((By.CSS_SELECTOR, "div.w-full.flex.flex-col.items-center.overflow-y-auto")))
+
+                # Get the content
+                try:
+                    content_container = popup.find_element(By.CSS_SELECTOR, "div.flex.flex-col.items-center.space-y-2.w-full.px-4") # finding the text element
+                    details = content_container.text # takes all text
+                except:
+                    details = popup.text # else get text of entire popup
+
+                grants_table.append(details) # adding data to table
+
+                # Close the popup
+                close_button = popup.find_element(By.XPATH, "//button[text()='Close']") # clicking close by  the name
+                close_button.click()
+                time.sleep(1)
+
+            except Exception as e: # if something weird happens print error statement with row number for debugging
+                print(f"Error on row {i}: {e}")
+
+        # Try to go to next page
+        try:
+            next_button = grant_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[2]/div[3]/div[2]/button[8]') # Get next button
+            if next_button.is_enabled():
+                print(f"Going to page {page_number + 1}") # keeps track of page number
+                next_button.click() # click next
+                page_number += 1
+                time.sleep(3)  # Wait longer for page to load
+            else:
+                print("Next button not presnet. Done!")
                 break
+        except Exception as e:
+            print(f"Scraping ended: {e}")
+            break
     
-            if next:
-                next.click()
-                time.sleep(2)
-    
-        except:
-            break 
+    print(f"Total grants collected: {len(grants_table)}") # prints total number of rows collected
 
 # function to scrape leases table
 def scrape_leases():
+    # finding the by lease value button to arrange the table by value
+    leases_total_value = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[3]/div[1]/div[2]/button[2]')
+    leases_total_value.click()
     time.sleep(2)
 
-    # the same notes that applied to the function scrape_grants() 
-    # apply to scrape_leases() as like the contracts function,
-    # their structures are extremely similar
-
-    leases_by_date = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[5]/div[3]/div[1]/div[2]/button[3]')
-    leases_by_date.click()
-
-    leases_total_value = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[5]/div[3]/div[1]/div[2]/button[2]')
-    leases_total_value.click()
-
-    # leases while loop
+    page_number = 1
+    
     while True:
         
-        lease_html = leases_driver.page_source
-        lease_tables = pd.read_html(lease_html)
-
-        leases_table.append(lease_tables[2])
-        print("Leases table collected")
-
-        try:
-            
-            next = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[5]/div[3]/div[3]/div[2]/button[8]')
-            
-            if not next.is_enabled():
-                break
-
-            if next:
-                next.click()
-                time.sleep(2)
+        # Wait for table rows to load
+        time.sleep(1.5)
+        tbody = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[3]/div[2]/div/div/div/table/tbody')
+        rows = tbody.find_elements(By.TAG_NAME, 'tr')
         
-        except:
+        for i, row in enumerate(rows):
+            try:
+                # Re-find the row to avoid stale element issues
+                tbody = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[3]/div[2]/div/div/div/table/tbody')
+                current_rows = tbody.find_elements(By.TAG_NAME, 'tr')
+                
+                if i < len(current_rows):
+                    current_rows[i].click()
+                else:
+                    print(f"Row {i} no longer exists, skipping")
+                    continue
+
+                # Wait for the popup to appear
+                popup = WebDriverWait(leases_driver, 10).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, "div.w-full.flex.flex-col.items-center.overflow-y-auto")))
+
+                # Get the content
+                try:
+                    content_container = popup.find_element(By.CSS_SELECTOR, "div.flex.flex-col.items-center.space-y-2.w-full.px-4")
+                    details = content_container.text
+                except:
+                    details = popup.text
+
+                leases_table.append(details)
+
+                # Close the popup
+                close_button = popup.find_element(By.XPATH, "//button[text()='Close']")
+                close_button.click()
+                time.sleep(1)
+
+            except Exception as e:
+                print(f"Error on row {i}: {e}")
+
+        # Try to go to next page
+        try:
+            next_button = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[3]/div[3]/div[2]/button[8]')
+            if next_button.is_enabled():
+                print(f"Going to page {page_number + 1}")
+                next_button.click()
+                page_number += 1
+                time.sleep(3)  # Wait longer for page to load
+            else:
+                print("Next button disabled, ending pagination")
+                break
+        except Exception as e:
+            print(f"Pagination ended: {e}")
             break
+    
+    print(f"Total leases collected: {len(leases_table)}")
+
+def scrape_contracts():
+    # finding the by contract value button to arrange the table by value
+    contracts_total_value = contract_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[1]/div[1]/div[2]/button[2]')
+    contracts_total_value.click()
+    time.sleep(2)
+
+    page_number = 1
+    
+    while True:
+        
+        # Wait for table rows to load
+        time.sleep(1.5)
+        tbody = contract_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[1]/div[2]/div/div/div/table/tbody')
+        rows = tbody.find_elements(By.TAG_NAME, 'tr')
+        
+        for i, row in enumerate(rows):
+            try:
+                # Re-find the row to avoid stale element issues
+                tbody = contract_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[1]/div[2]/div/div/div/table/tbody')
+                current_rows = tbody.find_elements(By.TAG_NAME, 'tr')
+                
+                if i < len(current_rows):
+                    current_rows[i].click()
+                else:
+                    print(f"Row {i} no longer exists, skipping")
+                    continue
+
+                # Wait for the popup to appear
+                popup = WebDriverWait(contract_driver, 10).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, "div.w-full.flex.flex-col.items-center.overflow-y-auto")))
+
+                # Get the content
+                try:
+                    content_container = popup.find_element(By.CSS_SELECTOR, "div.flex.flex-col.items-center.space-y-2.w-full.px-4")
+                    details = content_container.text
+                except:
+                    details = popup.text
+
+                contracts_table.append(details)
+
+                # Close the popup
+                close_button = popup.find_element(By.XPATH, "//button[text()='Close']")
+                close_button.click()
+                time.sleep(1)
+
+            except Exception as e:
+                print(f"Error on row {i}: {e}")
+
+        # Try to go to next page
+        try:
+            next_button = contract_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[1]/div[3]/div[2]/button[8]')
+            if next_button.is_enabled():
+                print(f"Going to page {page_number + 1}")
+                next_button.click()
+                page_number += 1
+                time.sleep(3)  # Wait longer for page to load
+            else:
+                print("Next button disabled, ending pagination")
+                break
+        except Exception as e:
+            print(f"Pagination ended: {e}")
+            break
+    
+    print(f"Total contracts collected: {len(contracts_table)}")
 
 # a function to add a new 'type' column and
 # combine the separate table lists into one data frame
 # then exporting to a csv file
 def clean_and_csv():
 
-    # takes all the contracts_table list of data frames 
-    # and combines them into one sigular data frame
-    contracts_df = pd.concat(contracts_table)
-    # adds a new column named type and labels all rows contract
-    # to specify that all of the collected data rows are 
-    # in fact contracts
+    # Create dataframes from the detail strings collected from each section
+    # Each list now contains detail strings instead of dataframes
+    contracts_df = pd.DataFrame(contracts_table, columns=['details'])
     contracts_df['type'] = 'contract'
 
-    # the same thing as above but for grants
-    grants_df = pd.concat(grants_table)
+    grants_df = pd.DataFrame(grants_table, columns=['details'])
     grants_df['type'] = 'grant'
 
-    # for leases
-    leases_df = pd.concat(leases_table)
+    leases_df = pd.DataFrame(leases_table, columns=['details'])
     leases_df['type'] = 'lease'
 
     # combining data frames into one data frame
-    combined_doge_data = pd.concat([contracts_df, grants_df, leases_df])
+    combined_doge_data = pd.concat([contracts_df, grants_df, leases_df], ignore_index=True)
 
     # making that data frame into a csv
-    combined_doge_data.to_csv('data/doge_data.csv')
+    combined_doge_data.to_csv('data/doge_data.csv', index=False)
 
 # when the scraper.py file is called in a terminal
 # the following things occur
