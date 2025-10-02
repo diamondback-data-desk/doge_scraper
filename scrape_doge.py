@@ -42,14 +42,13 @@ def scrape_grants():
     # finding the by grant value button to arrange the table by value
     grants_total_value = grant_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[2]/div[1]/div[2]/button[2]') # the direct xpath to the button . . . this breaks often and could be fixed (works without fix tho)
     grants_total_value.click()
-    time.sleep(2)
 
     page_number = 1
     
     while True:
         
         # Wait for table rows to load
-        time.sleep(1.5)
+        time.sleep(1)
         tbody = grant_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[2]/div[2]/div/div/div/table/tbody') #path to table body
         rows = tbody.find_elements(By.TAG_NAME, 'tr') # Collects all rows
         
@@ -81,7 +80,6 @@ def scrape_grants():
                 # Close the popup
                 close_button = popup.find_element(By.XPATH, "//button[text()='Close']") # clicking close by  the name
                 close_button.click()
-                time.sleep(1)
 
             except Exception as e: # if something weird happens print error statement with row number for debugging
                 print(f"Error on row {i}: {e}")
@@ -93,7 +91,6 @@ def scrape_grants():
                 print(f"Going to page {page_number + 1}") # keeps track of page number
                 next_button.click() # click next
                 page_number += 1
-                time.sleep(3)  # Wait longer for page to load
             else:
                 print("Next button not presnet. Done!")
                 break
@@ -108,14 +105,13 @@ def scrape_leases():
     # finding the by lease value button to arrange the table by value
     leases_total_value = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[3]/div[1]/div[2]/button[2]')
     leases_total_value.click()
-    time.sleep(2)
 
     page_number = 1
     
     while True:
         
         # Wait for table rows to load
-        time.sleep(1.5)
+        time.sleep(1)
         tbody = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[3]/div[2]/div/div/div/table/tbody')
         rows = tbody.find_elements(By.TAG_NAME, 'tr')
         
@@ -147,7 +143,6 @@ def scrape_leases():
                 # Close the popup
                 close_button = popup.find_element(By.XPATH, "//button[text()='Close']")
                 close_button.click()
-                time.sleep(1)
 
             except Exception as e:
                 print(f"Error on row {i}: {e}")
@@ -159,7 +154,6 @@ def scrape_leases():
                 print(f"Going to page {page_number + 1}")
                 next_button.click()
                 page_number += 1
-                time.sleep(3)  # Wait longer for page to load
             else:
                 print("Next button disabled, ending pagination")
                 break
@@ -173,14 +167,13 @@ def scrape_contracts():
     # finding the by contract value button to arrange the table by value
     contracts_total_value = contract_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[1]/div[1]/div[2]/button[2]')
     contracts_total_value.click()
-    time.sleep(2)
 
     page_number = 1
     
     while True:
         
         # Wait for table rows to load
-        time.sleep(1.5)
+        time.sleep(1)
         tbody = contract_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[1]/div[2]/div/div/div/table/tbody')
         rows = tbody.find_elements(By.TAG_NAME, 'tr')
         
@@ -212,7 +205,6 @@ def scrape_contracts():
                 # Close the popup
                 close_button = popup.find_element(By.XPATH, "//button[text()='Close']")
                 close_button.click()
-                time.sleep(1)
 
             except Exception as e:
                 print(f"Error on row {i}: {e}")
@@ -224,7 +216,6 @@ def scrape_contracts():
                 print(f"Going to page {page_number + 1}")
                 next_button.click()
                 page_number += 1
-                time.sleep(3)  # Wait longer for page to load
             else:
                 print("Next button disabled, ending pagination")
                 break
