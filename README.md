@@ -14,10 +14,9 @@ Raw DOGE cuts are provided in the data/doge_cuts.csv file. DOGE cuts specific to
 
 ## Update
 
+--October 2, 20205--
+Fixed cancelation of run due to job length issue. Increased the speed of the scraper, now it works faster than it did before with a run time of under two hours.
+
+Last Update:
 --October 1, 2025--
 The DOGE scraper is now both fixed and interates through every row. All descriptions of grants, leases and contracts within the savings page are now entirly collected - though, some of them are useless. It takes seven hours though. That's, a bit long. But I'll change the timing of collection times to not be as frequent.
-
---September 25, 2025--
-The DOGE scraper has been paused indefinitely since it no longer needs to run every day. Utilization of the scraper will be minimal going forward and as a way of checking the university. To initialize the scraper go to 'Actions', select the action you want to enable and click 'Enable Workflow’.
-
-Last updated by Theodore Rose on .
