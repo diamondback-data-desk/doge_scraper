@@ -1,5 +1,4 @@
 # Automatically Scraping DOGE Cuts to the University of Maryland
-By Theodore Rose
 
 ## Reasoning
 DOGE and the Trump administration have seen cuts to federal contracts, grants and leases as decreasing government waste. Institutions such as universities rely heavily on federal investment through these programs, the University of Maryland is one of these institutions. The Diamondback has relied on [self reported grant terminations](https://grant-watch.us/nsf-data.html) or this university [self reporting data](https://dbknews.com/2025/04/23/umd-research-cuts-grants-trump/) ([more data](https://president.umd.edu/articles/our-response-to-federal-changes)) to report these cuts to the public. To ensure that the paper will have updated and reliable data the need to get the data from DOGE directly became paramount.
@@ -20,3 +19,5 @@ Fixed cancelation of run due to job length issue. Increased the speed of the scr
 Last Update:
 --October 1, 2025--
 The DOGE scraper is now both fixed and interates through every row. All descriptions of grants, leases and contracts within the savings page are now entirly collected - though, some of them are useless. It takes seven hours though. That's, a bit long. But I'll change the timing of collection times to not be as frequent.
+
+Theodore Rose | Data Reporter
