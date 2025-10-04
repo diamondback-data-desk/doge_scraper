@@ -6,27 +6,54 @@ library(tidyverse)
 # Reading in raw DOGE data
 doge_data <- read_csv("data/doge_data.csv")
 
+# Cleaning the data
+clean_doge_data <- doge_data |>
+  filter(type != "lease") |>
+  mutate(
+    savings = str_extract(details, "\\$?[0-9,\\.]+(?=\\s+[Ss]avings)"),
+    contract_total = str_extract(details, "\\$?[0-9,\\.]+(?=\\s+[Tt]otal)"),
+    contract_description = str_extract(details, "(?i)Total Contract\\s+.*") |> 
+      str_remove("(?i)Total Contract\\s+"),
+    grant_description = str_extract(details, "(?i)Total Grant\\s+.*") |> 
+      str_remove("(?i)Total Grant\\s+"),
+    providing_agency = str_extract(details, "(?i)Agency:\\s*[^$]+") |>
+      str_remove("(?i)Agency:\\s*"),
+    vendor = str_extract(details, "^(.*?)\\s*[Aa]gency:") |>
+      str_remove("\\s*[Aa]gency:")
+  )
+
+clean_doge_data <- clean_doge_data |>
+  mutate(
+    vendor_lower = str_to_lower(vendor),
+    details_lower = str_to_lower(details)
+  )
+
 # Making one data frame with all the cuts related to the University of Maryland
 # includes non-College Park related campuses
-umd_doge_cuts <- doge_data |>
+umd_doge_cuts <- clean_doge_data |>
   mutate(
-    Vendor = str_to_lower(Vendor), # making Vendor and Recipient strings lower
-    Recipient = str_to_lower(Recipient)
+    vendor = str_to_lower(vendor),
+    details = str_to_lower(details)# making Vendor and Recipient strings lower
   ) |>
   filter(
-    str_detect(Vendor, "university of maryland") | 
-    str_detect(Vendor, " university of maryland ") |
-    str_detect(Vendor, "university of maryland ") |
-    str_detect(Vendor, " university of maryland") |
-    str_detect(Recipient, "university of maryland") | 
-    str_detect(Recipient, " university of maryland ") |
-    str_detect(Recipient, "university of maryland ") |
-    str_detect(Recipient, " university of maryland") |
-    str_detect(Recipient, "university of maryland, college park") | 
-    str_detect(Recipient, " university of maryland, college park  ") |
-    str_detect(Recipient, "university of maryland, college park ") |
-    str_detect(Recipient, " university of maryland, college park")
-)
+    str_detect(vendor, "university of maryland") | 
+    str_detect(vendor, " university of maryland ") |
+    str_detect(vendor, "university of maryland ") |
+    str_detect(vendor, " university of maryland") |
+    str_detect(vendor, "university of maryland, college park") | 
+    str_detect(vendor, " university of maryland, college park  ") |
+    str_detect(vendor, "university of maryland, college park ") |
+    str_detect(vendor, " university of maryland, college park") |
+    str_detect(details, "university of maryland") | 
+    str_detect(details, " university of maryland ") |
+    str_detect(details, "university of maryland ") |
+    str_detect(details, " university of maryland") |
+    str_detect(details, "university of maryland, college park") | 
+    str_detect(details, " university of maryland, college park  ") |
+    str_detect(details, "university of maryland, college park ") |
+    str_detect(details, " university of maryland, college park")
+) |>
+  select(-details)
 
 
 # Filtering out cuts that include "baltimore", "es", or "Eastern Shore"
