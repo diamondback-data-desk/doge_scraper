@@ -211,6 +211,7 @@ def scrape_contracts():
 
         # Try to go to next page
         try:
+            time.sleep(1)
             next_button = contract_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[1]/div[3]/div[2]/button[8]')
             if next_button.is_enabled():
                 print(f"Going to page {page_number + 1}")
