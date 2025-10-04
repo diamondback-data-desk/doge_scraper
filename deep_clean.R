@@ -31,40 +31,20 @@ clean_doge_data <- clean_doge_data |>
 # Making one data frame with all the cuts related to the University of Maryland
 # includes non-College Park related campuses
 umd_doge_cuts <- clean_doge_data |>
-  mutate(
-    vendor = str_to_lower(vendor),
-    details = str_to_lower(details)# making Vendor and Recipient strings lower
-  ) |>
-  filter(
-    str_detect(vendor, "university of maryland") | 
-    str_detect(vendor, " university of maryland ") |
-    str_detect(vendor, "university of maryland ") |
-    str_detect(vendor, " university of maryland") |
-    str_detect(vendor, "university of maryland, college park") | 
-    str_detect(vendor, " university of maryland, college park  ") |
-    str_detect(vendor, "university of maryland, college park ") |
-    str_detect(vendor, " university of maryland, college park") |
-    str_detect(details, "university of maryland") | 
-    str_detect(details, " university of maryland ") |
-    str_detect(details, "university of maryland ") |
-    str_detect(details, " university of maryland") |
-    str_detect(details, "university of maryland, college park") | 
-    str_detect(details, " university of maryland, college park  ") |
-    str_detect(details, "university of maryland, college park ") |
-    str_detect(details, " university of maryland, college park")
-) |>
+  filter(str_detect(vendor_lower, "university of maryland") |
+           str_detect(details_lower, "university of maryland"))
   select(-details)
 
 
 # Filtering out cuts that include "baltimore", "es", or "Eastern Shore"
 umd_doge_cuts_unrelated <- umd_doge_cuts |>
   filter(
-    str_detect(Vendor, "baltimore") | 
-    str_detect(Recipient, "baltimore") |
-    str_detect(Vendor, "university of maryland es") |
-    str_detect(Recipient, "university of maryland es") |
-    str_detect(Vendor, "eastern shore") |
-    str_detect(Recipient, "eastern shore") 
+    str_detect(vendor_lower, "baltimore") | 
+    str_detect(details_lower, "baltimore") |
+    str_detect(vendor_lower, "university of maryland es") |
+    str_detect(details_lower, "university of maryland es") |
+    str_detect(vendor_lower, "eastern shore") |
+    str_detect(details_lower, "eastern shore") 
   )
 
 # Creating data frame with only cuts related to the university of maryland
