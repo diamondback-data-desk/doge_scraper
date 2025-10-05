@@ -86,6 +86,7 @@ def scrape_grants():
 
         # Try to go to next page
         try:
+            time.sleep(1)
             next_button = grant_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[2]/div[3]/div[2]/button[8]') # Get next button
             if next_button.is_enabled():
                 print(f"Going to page {page_number + 1}") # keeps track of page number
@@ -149,6 +150,7 @@ def scrape_leases():
 
         # Try to go to next page
         try:
+            time.sleep(1)
             next_button = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[3]/div[3]/div[2]/button[8]')
             if next_button.is_enabled():
                 print(f"Going to page {page_number + 1}")
