@@ -1,3 +1,4 @@
+
 # Script to clean raw DOGE data to the University of Maryland
 
 # library
@@ -25,7 +26,7 @@ clean_doge_data <- doge_data |>
 clean_doge_data <- clean_doge_data |>
   mutate(
     vendor_lower = str_to_lower(vendor),
-    details_lower = str_to_lower(details)
+    full_details = str_to_lower(details)
   )
 
 # Making one data frame with all the cuts related to the University of Maryland
@@ -33,7 +34,6 @@ clean_doge_data <- clean_doge_data |>
 umd_doge_cuts <- clean_doge_data |>
   filter(str_detect(vendor_lower, "university of maryland") |
            str_detect(details_lower, "university of maryland"))
-  select(-details)
 
 
 # Filtering out cuts that include "baltimore", "es", or "Eastern Shore"
@@ -49,7 +49,8 @@ umd_doge_cuts_unrelated <- umd_doge_cuts |>
 
 # Creating data frame with only cuts related to the university of maryland
 # or university of maryland, college park
-umd_doge_cuts_related <- anti_join(umd_doge_cuts, umd_doge_cuts_unrelated)
+umd_doge_cuts_related <- anti_join(umd_doge_cuts, umd_doge_cuts_unrelated) |>
+  select(-details)
 
 # writing to the csv
 write_csv(umd_doge_cuts_related, "data/umd_cuts.csv")
