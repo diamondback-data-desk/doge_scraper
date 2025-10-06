@@ -82,7 +82,7 @@ def scrape_grants():
                 close_button.click()
 
             except Exception as e: # if something weird happens print error statement with row number for debugging
-                print(f"Error on row {i}: {e}")
+                print(f"Error in grants on row {i}: {e}")
 
         # Try to go to next page
         try:
@@ -112,7 +112,7 @@ def scrape_leases():
     while True:
         
         # Wait for table rows to load
-        time.sleep(1)
+        time.sleep(0.7)
         tbody = leases_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[3]/div[2]/div/div/div/table/tbody')
         rows = tbody.find_elements(By.TAG_NAME, 'tr')
         
@@ -146,7 +146,7 @@ def scrape_leases():
                 close_button.click()
 
             except Exception as e:
-                print(f"Error on row {i}: {e}")
+                print(f"Error in leases on row {i}: {e}")
 
         # Try to go to next page
         try:
@@ -210,7 +210,7 @@ def scrape_contracts():
                 close_button.click()
 
             except Exception as e:
-                print(f"Error on row {i}: {e}")
+                print(f"Error in contracts on row {i}: {e}")
 
         # Try to go to next page
         try:
