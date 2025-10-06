@@ -205,6 +205,7 @@ def scrape_contracts():
                 contracts_table.append(details)
 
                 # Close the popup
+                time.sleep(.5)
                 close_button = popup.find_element(By.XPATH, "//button[text()='Close']")
                 close_button.click()
 
@@ -213,7 +214,7 @@ def scrape_contracts():
 
         # Try to go to next page
         try:
-            time.sleep(1)
+            time.sleep(.5)
             next_button = contract_driver.find_element(By.XPATH, '//*[@id="main-content"]/div/div/div[4]/div[1]/div[3]/div[2]/button[8]')
             if next_button.is_enabled():
                 print(f"Going to page {page_number + 1}")
