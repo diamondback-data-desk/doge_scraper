@@ -25,26 +25,26 @@ clean_doge_data <- doge_data |>
 
 clean_doge_data <- clean_doge_data |>
   mutate(
-    vendor_lower = str_to_lower(vendor),
+    vendor = str_to_lower(vendor),
     full_details = str_to_lower(details)
   )
 
 # Making one data frame with all the cuts related to the University of Maryland
 # includes non-College Park related campuses
 umd_doge_cuts <- clean_doge_data |>
-  filter(str_detect(vendor_lower, "university of maryland") |
-           str_detect(details_lower, "university of maryland"))
+  filter(str_detect(vendor, "university of maryland") |
+           str_detect(full_details, "university of maryland"))
 
 
 # Filtering out cuts that include "baltimore", "es", or "Eastern Shore"
 umd_doge_cuts_unrelated <- umd_doge_cuts |>
   filter(
-    str_detect(vendor_lower, "baltimore") | 
-    str_detect(details_lower, "baltimore") |
-    str_detect(vendor_lower, "university of maryland es") |
-    str_detect(details_lower, "university of maryland es") |
-    str_detect(vendor_lower, "eastern shore") |
-    str_detect(details_lower, "eastern shore") 
+    str_detect(vendor, "baltimore") | 
+    str_detect(full_details, "baltimore") |
+    str_detect(vendor, "university of maryland es") |
+    str_detect(full_details, "university of maryland es") |
+    str_detect(vendor, "eastern shore") |
+    str_detect(full_details, "eastern shore") 
   )
 
 # Creating data frame with only cuts related to the university of maryland
