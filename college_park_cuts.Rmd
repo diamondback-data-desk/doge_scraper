@@ -125,7 +125,7 @@ more_than_one_mil
 ```
 
 
-*More than 46 percent of grants/contracts listed were reported as losing more than orhalf of the its initial worth*
+*More than 44 percent of grants/contracts listed were reported as losing more than orhalf of the its initial worth*
 
 ```{r}
 
