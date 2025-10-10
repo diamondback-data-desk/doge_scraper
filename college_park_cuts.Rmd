@@ -1,0 +1,198 @@
+---
+title: "umd_college_park"
+output: html_document
+---
+
+*Theodore Rose, Data Reporter for The Diamondback*
+
+*Analysis for UMD DOGE cuts*
+
+```{r}
+# importing libraries
+library(tidyverse)
+options(scipen = 999) # removing scientific notation
+
+```
+
+```{r}
+
+# set working directory to doge_scraper
+# below will not work if not
+
+# loading in all umd_cuts, not just college park
+# created by deep_clean
+all_uofmaryland_data <- read_csv("data/umd_cuts.csv")
+
+```
+*UMD College Park Cuts - Cleaning*
+```{r}
+
+# Getting only University of Maryland, College Park cuts
+# Any references that were just University of Maryland were NOT
+# counted in the College Park Count
+
+college_park_cuts <- all_uofmaryland_data |> # selecting data set
+  filter(str_detect(vendor, "college park")) |> # filter vendor for string that fits exactly college park
+  mutate( # editing the savings/contract total cols to sum later
+    savings = as.numeric(gsub("[\\$,]", "", savings)), # making numeric + taking out commas and dollar signs
+    contract_total = as.numeric(gsub("[\\$,]", "", contract_total)) # same thing as savings just for contract_total
+  ) |>
+  unite(description, grant_description, contract_description, sep = "", remove = TRUE) |> # combining the grant and contract description columns into one column for better data set readability
+  mutate(
+    description = gsub("NA", "", description) # when combining the two into description NA was still there, this just takes it out of description
+  )
+
+glimpse(college_park_cuts) # checking data
+
+```
+
+*... reports that $15 million have been removed through cuts to grants and contracts to the University of Maryland*
+```{r}
+
+# total savings for both contracts/grants
+
+college_park_cuts |> # using previously created data set
+  summarise( # summarise to get sums
+    total_savings = sum(savings, na.rm = TRUE), # sums the reported savings (na.rm=TRUE ignores NA values)
+    total_worth = sum(contract_total, na.rm = TRUE) # sums the reported worth of contract/grant (na.rm same for above)
+  )
+
+```
+*30 grants *
+```{r}
+
+college_park_cuts |>
+  filter(type == "grant") |>
+  summarise(
+    grants_cut = n()
+  )
+
+```
+
+*and two contracts were cut*
+
+```{r}
+
+college_park_cuts |>
+  filter(type == "contract") |>
+  summarise(
+    contracts_cut = n()
+  )
+
+```
+*NSF and the Institute of Museum and Library Services made up a majority of grant cuts by DOGE*
+
+```{r}
+
+nsf_and_imls <- college_park_cuts |> # creating new data frame only contain grants/contracts with the providing agency as either NSF or from the Institute of Museum and Library Services
+  mutate(providing_agency = str_to_lower(providing_agency)) |> # making column all lowercase for easier analysis
+  filter( # filtering for either agency
+    providing_agency == "national science foundation\r\n" |
+    providing_agency == "institute of museum and library services\r\n"
+    )
+
+nsf_and_imls |> # making sure that these are all grants
+  filter(type == "grant") |>
+  summarise(
+    count_nsf_and_imls = n() # counting them
+  )
+
+(22 / 30) * 100 # simple percentage of the NSF and IML grants out of all grants (30)
+# ^ 73.33%
+
+```
+
+*the median amount reduced for all grants/contracts listed was more than $211,000*
+
+```{r}
+
+college_park_cuts |>
+  summarise(
+    median = median(savings, na.rm = TRUE)
+  )
+
+```
+
+*five grants saw cuts of more than $1 million / top grant was about $3 million *
+```{r}
+
+college_park_cuts |>
+  filter(savings >= 1000000) |>
+  arrange(desc(savings))
+
+```
+
+
+*More than 46 percent of grants/contracts listed were reported as losing more than orhalf of the its initial worth*
+
+```{r}
+
+college_park_cuts |> # data frame
+  summarise( # summaries stats
+    percent_lost = (savings / contract_total) * 100, # getting percent lost
+    type, # keeping all the below cols 
+    savings,
+    contract_total,
+    providing_agency,
+    description
+  ) |>
+  filter(percent_lost >= 50) |> # filter for greater than 50% lost
+  summarise(
+    count_lost_more_than_50_pct = n() # counting the number that lost more than 50% 
+  )
+
+(14 / 32) * 100 # quick percentage of total contracts/grants
+
+```
+*DOGE cut more than 90 of funding to seven grants*
+```{r}
+
+college_park_cuts |> # data frame
+  summarise( # summaries stats
+    percent_lost = (savings / contract_total) * 100, # getting percent lost
+    type, # keeping all the below cols 
+    savings,
+    contract_total,
+    providing_agency,
+    description
+  ) |>
+  filter(percent_lost >= 90) |> # filter for greater than 50% lost
+  summarise(
+    count_lost_more_than_90_pct = n() # counting the number that lost more than 90% 
+  )
+```
+
+*four lost their entire funding*
+```{r}
+college_park_cuts |> # data frame
+  summarise( # summaries stats
+    percent_lost = (savings / contract_total) * 100, # getting percent lost
+    type, # keeping all the below cols 
+    savings,
+    contract_total,
+    providing_agency,
+    description
+  ) |>
+  filter(percent_lost == 100) |> # filter for greater than 50% lost
+  summarise(
+    count_lost_more_than_100_pct = n() # counting the number that lost more than 100% 
+  )
+```
+
+*the descriptions of the four that were fully cut*
+```{r}
+
+fully_cut_grants <- college_park_cuts |> # data frame
+  summarise( # summaries stats
+    percent_lost = (savings / contract_total) * 100, # getting percent lost
+    type, # keeping all the below cols 
+    savings,
+    contract_total,
+    providing_agency,
+    description
+  ) |>
+  filter(percent_lost == 100) # filter for greater than 50% lost
+
+fully_cut_grants
+
+```
