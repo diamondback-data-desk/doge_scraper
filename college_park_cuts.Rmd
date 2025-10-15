@@ -69,7 +69,7 @@ college_park_cuts |>
 
 ```
 
-*and two contracts were cut*
+*and 0 contracts were cut*
 
 ```{r}
 
@@ -125,7 +125,7 @@ more_than_one_mil
 ```
 
 
-*More than 44 percent of grants/contracts listed were reported as losing more than orhalf of the its initial worth*
+*More than 43 percent of grants/contracts listed were reported as losing more than or half of the its initial worth*
 
 ```{r}
 
@@ -143,9 +143,10 @@ college_park_cuts |> # data frame
     count_lost_more_than_50_pct = n() # counting the number that lost more than 50% 
   )
 
-(14 / 32) * 100 # quick percentage of total contracts/grants
+(13 / 30) * 100 # quick percentage of total contracts/grants
 
 ```
+
 *DOGE cut more than 90 of funding to seven grants*
 ```{r}
 
