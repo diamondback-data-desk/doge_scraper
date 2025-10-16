@@ -44,6 +44,9 @@ college_park_cuts <- all_uofmaryland_data |> # selecting data set
 
 glimpse(college_park_cuts) # checking data
 
+# making it a csv for viz
+write_csv(college_park_cuts, "data/college_park_cuts.csv")
+
 ```
 
 *... reports that $15 million have been removed through cuts to grants and contracts to the University of Maryland*
