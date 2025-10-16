@@ -39,13 +39,10 @@ college_park_cuts <- all_uofmaryland_data |> # selecting data set
   ) |>
   unite(description, grant_description, contract_description, sep = "", remove = TRUE) |> # combining the grant and contract description columns into one column for better data set readability
   mutate(
-    description = gsub("NA", "", description) # when combining the two into description NA was still there, this just takes it out of description
+    description = gsub("NA", "", description), # when combining the two into description NA was still there, this just takes it out of description
   )
 
 glimpse(college_park_cuts) # checking data
-
-# making it a csv for viz
-write_csv(college_park_cuts, "data/college_park_cuts.csv")
 
 ```
 
@@ -202,3 +199,19 @@ fully_cut_grants <- college_park_cuts |> # data frame
 fully_cut_grants
 
 ```
+
+```{r}
+
+college_park_cuts <- college_park_cuts |>
+  mutate(
+    description = str_to_sentence(description),
+    providing_agency = str_to_sentence(providing_agency),
+    type = str_to_sentence(type)
+  ) |>
+  select(-vendor, -full_details)
+
+# making it a csv for viz
+write_csv(college_park_cuts, "data/college_park_cuts.csv")
+
+```
+

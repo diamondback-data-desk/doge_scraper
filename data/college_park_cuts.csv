@@ -1,241 +1,61 @@
-type,savings,contract_total,description,providing_agency,vendor,full_details
-grant,1634442,4506218,Teacher-Training DEI Grant,"DEPARTMENT OF EDUCATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: department of education
-$1,634,442
-savings
-$4,506,218
-total grant
-teacher-training dei grant"
-grant,2998213,3512917,"Terrorism and Targeted Violence in the United States (T2V): Database, Analysis, and Dissemination","DEPARTMENT OF HOMELAND SECURITY
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: department of homeland security
-$2,998,213
-savings
-$3,512,917
-total grant
-terrorism and targeted violence in the united states (t2v): database, analysis, and dissemination"
-grant,1907771.91,2743850,HIGHLY-EFFICIENT MULTI-EFFECT DRYING SYSTEMS DRIVEN BY HEAT PUMPS,"DEPARTMENT OF ENERGY
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: department of energy
-$1,907,771.91
-savings
-$2,743,850
-total grant
-highly-efficient multi-effect drying systems driven by heat pumps"
-grant,1643029,1643029,SMART COLD CLIMATE ROOFTOP HEAT PUMP WITH LOW-GWP REFRIGERANT,"DEPARTMENT OF ENERGY
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: department of energy
-$1,643,029
-savings
-$1,643,029
-total grant
-smart cold climate rooftop heat pump with low-gwp refrigerant"
-grant,1195667.8,1420490,"NEXT GENERATION LIQUID-TO-REFRIGERANT HEAT EXCHANGERS FOR HEAT PUMPS, WATER HEATERS, AND REFRIGERATION SYSTEMS","DEPARTMENT OF ENERGY
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: department of energy
-$1,195,667.8
-savings
-$1,420,490
-total grant
-next generation liquid-to-refrigerant heat exchangers for heat pumps, water heaters, and refrigeration systems"
-grant,190072.45,1172781,Collaborative Research: Accessible Computational Thinking in Elementary Science Classes within and across Culturally and Linguistically Diverse Contexts,"NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$190,072.45
-savings
-$1,172,781
-total grant
-collaborative research: accessible computational thinking in elementary science classes within and across culturally and linguistically diverse contexts"
-grant,288257.96,998969,Quantitative Research Methods for STEM Education Scholars Program,"NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$288,257.96
-savings
-$998,969
-total grant
-quantitative research methods for stem education scholars program"
-grant,237305.49,987764,"Understanding When Diversity, Equity and Inclusion (DEI) Work ""Counts"" in Faculty Evaluation","NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$237,305.49
-savings
-$987,764
-total grant
-understanding when diversity, equity and inclusion (dei) work ""counts"" in faculty evaluation"
-grant,751519.87,813628,CAIG: An AI-based Approach to Quantifying and Explaining Uncertainty and Inequity in Geoscience,"NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$751,519.87
-savings
-$813,628
-total grant
-caig: an ai-based approach to quantifying and explaining uncertainty and inequity in geoscience"
-grant,99148.71,812798,The AGEP Alliance State System Model to Transform the Hiring Practices and Career Success of Tenure Track Historically Underrepresented Minority Faculty in Biomedical Sciences,"NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$99,148.71
-savings
-$812,798
-total grant
-the agep alliance state system model to transform the hiring practices and career success of tenure track historically underrepresented minority faculty in biomedical sciences"
-grant,75859.53,780000,SaTC: CORE: Medium: Learning Code(s): Community-Centered Design of Automated Content Moderation,"NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$75,859.53
-savings
-$780,000
-total grant
-satc: core: medium: learning code(s): community-centered design of automated content moderation"
-grant,664583,679917,Collaborative Research: Developing a Culturally Responsive Community of Practice to Build Equitable Pathways to Graduate STEM Education,"NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$664,583
-savings
-$679,917
-total grant
-collaborative research: developing a culturally responsive community of practice to build equitable pathways to graduate stem education"
-grant,299909.91,599948,INCLUDES DDLP: Creating Opportunities in the Mathematical Sciences through Equity and INclusion (COME-IN),"NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$299,909.91
-savings
-$599,948
-total grant
-includes ddlp: creating opportunities in the mathematical sciences through equity and inclusion (come-in)"
-grant,148047.44,551881,"Race, Religion, and STEM: Examining the Intersections for Black Students","NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$148,047.44
-savings
-$551,881
-total grant
-race, religion, and stem: examining the intersections for black students"
-grant,204322.35,496070,Inverting Colonial Archival Authority: Increasing Access for Indigenous Communities in SC,"INSTITUTE OF MUSEUM AND LIBRARY SERVICES
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: institute of museum and library services
-$204,322.35
-savings
-$496,070
-total grant
-inverting colonial archival authority: increasing access for indigenous communities in snac"
-grant,335643.16,485350,SBP: CAREER: Inferior and foreign racial stereotypes give rise to exploitative and exclusionary discrimination,"NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$335,643.16
-savings
-$485,350
-total grant
-sbp: career: inferior and foreign racial stereotypes give rise to exploitative and exclusionary discrimination"
-grant,152374.95,458151,"Crowdsourced Data: Accuracy, Accessibility, Authority","INSTITUTE OF MUSEUM AND LIBRARY SERVICES
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: institute of museum and library services
-$152,374.95
-savings
-$458,151
-total grant
-crowdsourced data: accuracy, accessibility, authority"
-grant,211565.17,429788,CAREER: Socio-Algorithmic Foundations of Trustworthy Recommendations,"NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$211,565.17
-savings
-$429,788
-total grant
-career: socio-algorithmic foundations of trustworthy recommendations"
-grant,143855.9,399698,Launching the TALENT Network to Promote the Training of Archival & Library Educators w. iNnovative Technologies,"INSTITUTE OF MUSEUM AND LIBRARY SERVICES
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: institute of museum and library services
-$143,855.9
-savings
-$399,698
-total grant
-launching the talent network to promote the training of archival & library educators w. innovative technologies"
-grant,72941.78,379957,"Libraries, Integration, and New Americans: Understanding immigrant acculturative stress","INSTITUTE OF MUSEUM AND LIBRARY SERVICES
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: institute of museum and library services
-$72,941.78
-savings
-$379,957
-total grant
-libraries, integration, and new americans: understanding immigrant acculturative stress"
-grant,7818.13,351259,Collaborative Research: An Evidence-Based Approach Towards Technology Workforce Expansion by Increasing Female Participation in STEM Entrepreneurship,"NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$7,818.13
-savings
-$351,259
-total grant
-collaborative research: an evidence-based approach towards technology workforce expansion by increasing female participation in stem entrepreneurship"
-grant,349589,349589,A project to develop and test new scalable approaches to reparative metadata using the Social Networks and Archival Context (SC) platform as a model for facilitating Indigenous archival discovery and description.,"NATIONAL ENDOWMENT FOR THE HUMANITIES
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national endowment for the humanities
-$349,589
-savings
-$349,589
-total grant
-a project to develop and test new scalable approaches to reparative metadata using the social networks and archival context (snac) platform as a model for facilitating indigenous archival discovery and description."
-grant,322532,322532,"Digitization of 100,000 pages of Maryland newspapers, published prior to 1963, as part of the state’s continuing participation in the National Digital Newspaper Program (NDNP). This phase would focus on papers from the colonial period and early nineteenth century, the <em>Jewish Times</em>, and titles covering Prince George’s County in the 1940s and ’50s.","NATIONAL ENDOWMENT FOR THE HUMANITIES
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national endowment for the humanities
-$322,532
-savings
-$322,532
-total grant
-digitization of 100,000 pages of maryland newspapers, published prior to 1963, as part of the state’s continuing participation in the national digital newspaper program (ndnp). this phase would focus on papers from the colonial period and early nineteenth century, the <em>jewish times</em>, and titles covering prince george’s county in the 1940s and ’50s."
-grant,253707.7,289223,From Canvas to Community: Unlocking the African American Art Archive,"INSTITUTE OF MUSEUM AND LIBRARY SERVICES
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: institute of museum and library services
-$253,707.7
-savings
-$289,223
-total grant
-from canvas to community: unlocking the african american art archive"
-grant,249999,249999,The Hatchlings Project: Community-Library Partnerships to Reduce Childhood Literacy Inequities,"INSTITUTE OF MUSEUM AND LIBRARY SERVICES
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: institute of museum and library services
-$249,999
-savings
-$249,999
-total grant
-the hatchlings project: community-library partnerships to reduce childhood literacy inequities"
-grant,156280.01,245500,Ready Now: Supporting Youth and Families During Crisis,"INSTITUTE OF MUSEUM AND LIBRARY SERVICES
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: institute of museum and library services
-$156,280.01
-savings
-$245,500
-total grant
-ready now: supporting youth and families during crisis"
-grant,91485.87,196240,"Collaborative Research: The Role of Elites, Organizations, and Movements in Reshaping Politics and Policymaking","NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$91,485.87
-savings
-$196,240
-total grant
-collaborative research: the role of elites, organizations, and movements in reshaping politics and policymaking"
-grant,193976.77,194229,Harnessing Generative AI to Support Exploration and Discovery in Library and Archival Collections,"INSTITUTE OF MUSEUM AND LIBRARY SERVICES
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: institute of museum and library services
-$193,976.77
-savings
-$194,229
-total grant
-harnessing generative ai to support exploration and discovery in library and archival collections"
-grant,67912.71,148591,"Creation of new datasets containing geographic locations and place names extracted from transcriptions of premodern Islamic texts that will be shared with existing open-source gazetteers and machine learning transcription software that support humanities research. &nbsp;<br class=""SCXW160617712 BCX0"" style=""margin: 0px; padding: 0px; user-select: text; -webkit-user-drag: none; -webkit-tap-highlight-color: transparent; text-wrap: nowrap !important;"" />","NATIONAL ENDOWMENT FOR THE HUMANITIES
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national endowment for the humanities
-$67,912.71
-savings
-$148,591
-total grant
-creation of new datasets containing geographic locations and place names extracted from transcriptions of premodern islamic texts that will be shared with existing open-source gazetteers and machine learning transcription software that support humanities research. &nbsp;<br class=""scxw160617712 bcx0"" style=""margin: 0px; padding: 0px; user-select: text; -webkit-user-drag: none; -webkit-tap-highlight-color: transparent; text-wrap: nowrap !important;"" />"
-grant,34137.6,70000,Collaborative Research: Evaluating Access: How a Multi-Institutional Network Promotes Equity and Cultural Change through Expanding Student Voice,"NATIONAL SCIENCE FOUNDATION
-","grant to university of maryland, college park","grant to university of maryland, college park
-agency: national science foundation
-$34,137.6
-savings
-$70,000
-total grant
-collaborative research: evaluating access: how a multi-institutional network promotes equity and cultural change through expanding student voice"
+type,savings,contract_total,description,providing_agency
+Grant,1634442,4506218,Teacher-training dei grant,"Department of education
+"
+Grant,2998213,3512917,"Terrorism and targeted violence in the united states (t2v): database, analysis, and dissemination","Department of homeland security
+"
+Grant,1907771.91,2743850,Highly-efficient multi-effect drying systems driven by heat pumps,"Department of energy
+"
+Grant,1643029,1643029,Smart cold climate rooftop heat pump with low-gwp refrigerant,"Department of energy
+"
+Grant,1195667.8,1420490,"Next generation liquid-to-refrigerant heat exchangers for heat pumps, water heaters, and refrigeration systems","Department of energy
+"
+Grant,190072.45,1172781,Collaborative research: accessible computational thinking in elementary science classes within and across culturally and linguistically diverse contexts,"National science foundation
+"
+Grant,288257.96,998969,Quantitative research methods for stem education scholars program,"National science foundation
+"
+Grant,237305.49,987764,"Understanding when diversity, equity and inclusion (dei) work ""counts"" in faculty evaluation","National science foundation
+"
+Grant,751519.87,813628,Caig: an ai-based approach to quantifying and explaining uncertainty and inequity in geoscience,"National science foundation
+"
+Grant,99148.71,812798,The agep alliance state system model to transform the hiring practices and career success of tenure track historically underrepresented minority faculty in biomedical sciences,"National science foundation
+"
+Grant,75859.53,780000,Satc: core: medium: learning code(s): community-centered design of automated content moderation,"National science foundation
+"
+Grant,664583,679917,Collaborative research: developing a culturally responsive community of practice to build equitable pathways to graduate stem education,"National science foundation
+"
+Grant,299909.91,599948,Includes ddlp: creating opportunities in the mathematical sciences through equity and inclusion (come-in),"National science foundation
+"
+Grant,148047.44,551881,"Race, religion, and stem: examining the intersections for black students","National science foundation
+"
+Grant,204322.35,496070,Inverting colonial archival authority: increasing access for indigenous communities in sc,"Institute of museum and library services
+"
+Grant,335643.16,485350,Sbp: career: inferior and foreign racial stereotypes give rise to exploitative and exclusionary discrimination,"National science foundation
+"
+Grant,152374.95,458151,"Crowdsourced data: accuracy, accessibility, authority","Institute of museum and library services
+"
+Grant,211565.17,429788,Career: socio-algorithmic foundations of trustworthy recommendations,"National science foundation
+"
+Grant,143855.9,399698,Launching the talent network to promote the training of archival & library educators w. innovative technologies,"Institute of museum and library services
+"
+Grant,72941.78,379957,"Libraries, integration, and new americans: understanding immigrant acculturative stress","Institute of museum and library services
+"
+Grant,7818.13,351259,Collaborative research: an evidence-based approach towards technology workforce expansion by increasing female participation in stem entrepreneurship,"National science foundation
+"
+Grant,349589,349589,A project to develop and test new scalable approaches to reparative metadata using the social networks and archival context (sc) platform as a model for facilitating indigenous archival discovery and description.,"National endowment for the humanities
+"
+Grant,322532,322532,"Digitization of 100,000 pages of maryland newspapers, published prior to 1963, as part of the state’s continuing participation in the national digital newspaper program (ndnp). this phase would focus on papers from the colonial period and early nineteenth century, the <em>jewish times</em>, and titles covering prince george’s county in the 1940s and ’50s.","National endowment for the humanities
+"
+Grant,253707.7,289223,From canvas to community: unlocking the african american art archive,"Institute of museum and library services
+"
+Grant,249999,249999,The hatchlings project: community-library partnerships to reduce childhood literacy inequities,"Institute of museum and library services
+"
+Grant,156280.01,245500,Ready now: supporting youth and families during crisis,"Institute of museum and library services
+"
+Grant,91485.87,196240,"Collaborative research: the role of elites, organizations, and movements in reshaping politics and policymaking","National science foundation
+"
+Grant,193976.77,194229,Harnessing generative ai to support exploration and discovery in library and archival collections,"Institute of museum and library services
+"
+Grant,67912.71,148591,"Creation of new datasets containing geographic locations and place names extracted from transcriptions of premodern islamic texts that will be shared with existing open-source gazetteers and machine learning transcription software that support humanities research. &nbsp;<br class=""scxw160617712 bcx0"" style=""margin: 0px; padding: 0px; user-select: text; -webkit-user-drag: none; -webkit-tap-highlight-color: transparent; text-wrap: nowrap !Important;"" />","National endowment for the humanities
+"
+Grant,34137.6,70000,Collaborative research: evaluating access: how a multi-institutional network promotes equity and cultural change through expanding student voice,"National science foundation
+"
