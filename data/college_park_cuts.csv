@@ -1,4 +1,8 @@
 type,savings,contract_total,description,providing_agency
+Contract,100000,188098,Shuttle service,"Department of agriculture
+"
+Contract,NA,NA,,"Department of health and human services
+Mathematical/statistical analysis: development of harmonic analysis and machine learning"
 Grant,1634442,4506218,Teacher-training dei grant,"Department of education
 "
 Grant,2998213,3512917,"Terrorism and targeted violence in the united states (t2v): database, analysis, and dissemination","Department of homeland security
@@ -43,7 +47,7 @@ Grant,7818.13,351259,Collaborative research: an evidence-based approach towards 
 "
 Grant,349589,349589,A project to develop and test new scalable approaches to reparative metadata using the social networks and archival context (sc) platform as a model for facilitating indigenous archival discovery and description.,"National endowment for the humanities
 "
-Grant,322532,322532,"Digitization of 100,000 pages of maryland newspapers, published prior to 1963, as part of the state’s continuing participation in the national digital newspaper program (ndnp). this phase would focus on papers from the colonial period and early nineteenth century, the <em>jewish times</em>, and titles covering prince george’s county in the 1940s and ’50s.","National endowment for the humanities
+Grant,322532,322532,"Digitization of 100,000 pages of maryland newspapers, published prior to 1963, as part of the state’s continuing participation in the national digital newspaper program (ndnp). This phase would focus on papers from the colonial period and early nineteenth century, the <em>jewish times</em>, and titles covering prince george’s county in the 1940s and ’50s.","National endowment for the humanities
 "
 Grant,253707.7,289223,From canvas to community: unlocking the african american art archive,"Institute of museum and library services
 "
